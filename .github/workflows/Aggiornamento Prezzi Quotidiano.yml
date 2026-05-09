@@ -1,4 +1,4 @@
-name: Aggiornamento Prezzi Quotidiano
+name: Aggiornamento_Prezzi_Quotidiano
 
 on:
   schedule:
