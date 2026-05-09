@@ -30,6 +30,6 @@ jobs:
         run: |
           git config --global user.name 'PriceBot'
           git config --global user.email 'bot@github.com'
-          git add prezzi.csv
+          git add *.csv
           git commit -m "Aggiornamento prezzi automatico" || exit 0
           git push
