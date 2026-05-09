@@ -31,3 +31,5 @@ jobs:
           git add prezzi.csv
           git commit -m "Aggiornamento prezzi automatico" || exit 0
           git push
+          git commit -m "Aggiornamento prezzi automatico" || exit 0
+          git push
