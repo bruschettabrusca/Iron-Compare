@@ -2,12 +2,14 @@ name: Aggiornamento_Prezzi_Quotidiano
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Gira ogni mattina alle 08:00 UTC
-  workflow_dispatch: # Permette di farlo partire a mano per testare
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout del codice
         uses: actions/checkout@v4
@@ -19,7 +21,7 @@ jobs:
 
       - name: Installa librerie
         run: |
-          pip install -r requirements.txt
+          pip install requests beautifulsoup4 pandas lxml
 
       - name: Esegui lo script di scraping
         run: python monitor.py
@@ -29,7 +31,5 @@ jobs:
           git config --global user.name 'PriceBot'
           git config --global user.email 'bot@github.com'
           git add prezzi.csv
-          git commit -m "Aggiornamento prezzi automatico" || exit 0
-          git push
           git commit -m "Aggiornamento prezzi automatico" || exit 0
           git push
